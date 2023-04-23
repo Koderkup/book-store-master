@@ -16,28 +16,28 @@ function Cart() {
   const [payNumber, setPayNumber] = useState("");
   const [message, setMessage] = useState("");
   const [value, setValue] = useState("");
-let isFormFill = email && message && payNumber;
+
 
   const formHandler = async (e) => {
+    e.preventDefault();
     setStatus("Отпраляется!.......");
+     const { pay_number, email, message } = e.target.elements;
     let details = {
-      pay_number: payNumber,
-      email: email,
-      message: message,
+      pay_number: pay_number.value,
+      email: email.value,
+      message: message.value,
     };
-    await fetch("http://localhost:5000/email", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify({ ...details }),
-    });
-
+       tranSuccess();
+   let response = await fetch("http://localhost:5000/email", {
+     method: "POST",
+     headers: {
+       "Content-Type": "application/json;charset=utf-8",
+     },
+     body: JSON.stringify({ ...details }),
+   });
     setStatus("Отправить");
-    setEmail("");
-    setPayNumber("");
-    setMessage("");
-    tranSuccess();
+   console.log(response.status);
+   
   };
   const getQrCode = async (total) => {
     try {
@@ -185,7 +185,7 @@ let isFormFill = email && message && payNumber;
       {qr && cart.length > 0 ? (
         <div className="modal_overlay">
           <QRCode value={value} className="qrcode" />
-          <div className="modal">
+          <form className="modal" onSubmit={formHandler}>
             <input
               className="pay_number"
               type="text"
@@ -215,14 +215,10 @@ let isFormFill = email && message && payNumber;
               }}
               required
             />
-            <button type="submit" className="pay_btn" disabled={isFormFill} onClick={(e)=>{
-              console.log("lkl");
-              formHandler();
-              // tranSuccess();
-            }}>
+            <button type="submit" className="pay_btn">
               {status}
             </button>
-          </div>
+          </form>
         </div>
       ) : (
         ""
