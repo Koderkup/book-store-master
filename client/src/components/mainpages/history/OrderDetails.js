@@ -1,14 +1,19 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { GlobalState } from "../../../GlobalState";
-
+import ReviewForm from "../../reviews/ReviewForm";
 function OrderDetails() {
   const state = useContext(GlobalState);
   const [history] = state.userAPI.history;
   const [orderDetails, setOrderDetails] = useState([]);
-
+  const [isLogged] = state.userAPI.isLogged;
+  const [productId, setProductId] = useState("");
+  const [selectedValue, setSelectedValue] = useState("");
   const params = useParams();
 
+  function handleCheckboxChange(event) {
+    setSelectedValue(event.target.value);
+  }
   useEffect(() => {
     if (params.id) {
       history.forEach((item) => {
@@ -33,11 +38,17 @@ function OrderDetails() {
         <tbody>
           <tr>
             <td>{orderDetails.name}</td>
+            <td>{orderDetails.address}</td>
             <td>
-              {orderDetails.address}
+              {orderDetails.address.postal_code
+                ? orderDetails.address.postal_code
+                : "210040"}
             </td>
-            <td>{orderDetails.address.postal_code ? orderDetails.address.postal_code : '210040'}</td>
-            <td>{orderDetails.address.country_code ? orderDetails.address.country_code: '+375'}</td>
+            <td>
+              {orderDetails.address.country_code
+                ? orderDetails.address.country_code
+                : "+375"}
+            </td>
           </tr>
         </tbody>
       </table>
@@ -52,9 +63,19 @@ function OrderDetails() {
           </tr>
         </thead>
         <tbody>
-          {orderDetails.cart.map((item) => (
+          {orderDetails.cart.map((item, index) => (
             <tr key={item._id}>
-              <td>
+              <td className="td">
+                <input
+                  type="checkbox"
+                  className="checkdox"
+                  value={`option${index}`}
+                  checked={selectedValue === `option${index}`}
+                  onChange={(e) => {
+                    setProductId(item._id);
+                    handleCheckboxChange(e);
+                  }}
+                />
                 <img src={item.images.url} alt="" />
               </td>
               <td>{item.title}</td>
@@ -64,6 +85,15 @@ function OrderDetails() {
           ))}
         </tbody>
       </table>
+      {isLogged && productId ? (
+        <ReviewForm
+          productId={productId}
+          userId={orderDetails.user_id}
+          author={orderDetails.name}
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 }

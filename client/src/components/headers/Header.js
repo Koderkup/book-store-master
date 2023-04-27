@@ -96,6 +96,7 @@
           </Link>
         </div>
       )}
+      <Link to="/reviews" className='reviews'> ОТЗЫВЫ </Link>
     </header>
   );
  }

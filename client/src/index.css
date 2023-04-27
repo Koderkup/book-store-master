@@ -64,6 +64,12 @@ button{
 /* ------------------- Create Product -------------- */
 @import url("./components/mainpages/createProduct/createProduct.css");
 
+/* ----------------Reviews------------------------------------------ */
+
+@import url("./components/reviews/review.css");
+
+@import url("./components/reviews/reviewForm.css");
+
 /* ----------------- Responsive ------------------ */
 @media (max-width: 820px){
   header .logo{

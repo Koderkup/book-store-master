@@ -12,9 +12,6 @@ function Cart() {
   const [address] = state.userAPI.email;
   const [qr, setQr] = useState(false);
   const [status, setStatus] = useState("Отправить");
-  const [email, setEmail] = useState("");
-  const [payNumber, setPayNumber] = useState("");
-  const [message, setMessage] = useState("");
   const [value, setValue] = useState("");
 
 
@@ -28,7 +25,7 @@ function Cart() {
       message: message.value,
     };
        tranSuccess();
-   let response = await fetch("http://localhost:5000/email", {
+   await fetch("http://localhost:5000/email", {
      method: "POST",
      headers: {
        "Content-Type": "application/json;charset=utf-8",
@@ -36,7 +33,6 @@ function Cart() {
      body: JSON.stringify({ ...details }),
    });
     setStatus("Отправить");
-   console.log(response.status);
    
   };
   const getQrCode = async (total) => {
@@ -191,9 +187,6 @@ function Cart() {
               type="text"
               placeholder="введите номер платежа"
               name="pay_number"
-              onChange={(e) => {
-                setPayNumber(e.target.value);
-              }}
               required
             />
             <input
@@ -201,18 +194,12 @@ function Cart() {
               type="email"
               name="email"
               placeholder="email для обратной связи"
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
               required
             />
             <textarea
               placeholder="напишите адрес и предпочтительное время доставки"
               name="message"
               className="address"
-              onChange={(e) => {
-                setMessage(e.target.value);
-              }}
               required
             />
             <button type="submit" className="pay_btn">

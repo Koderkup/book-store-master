@@ -11,6 +11,7 @@
  import Categories from "./categories/Categories";
  import CreateProduct from "./createProduct/CreateProduct";
  import { GlobalState } from "../../GlobalState";
+import Reviews from "../reviews/Reviews";
 
  const Pages = () =>{
   const state = useContext(GlobalState);
@@ -42,6 +43,7 @@
    />
 
        <Route path="/cart" element={<Cart />} />
+       <Route path="/reviews" element={<Reviews />} />
 
        <Route path="*" element={<NotFound />} />
      </Routes>
