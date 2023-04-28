@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
+import { GlobalState } from "../../GlobalState";
 import axios from "axios";
+
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const [filterText, setFilterText] = useState("");
-  
+  const state = useContext(GlobalState);
+  const [isLogged] = state.userAPI.isLogged;
   const filteredReviews = reviews.filter((review) => {
-  const bookTitle = review.product.title.toLowerCase();
+    const bookTitle = review.product.title.toLowerCase();
     return bookTitle.includes(filterText.toLowerCase());
   });
 
@@ -17,7 +20,6 @@ const Reviews = () => {
     try {
       const response = await axios.get("api/reviews");
       const data = response.data;
-      console.log(data);
       setReviews(data);
     } catch (err) {
       console.error(err);
@@ -45,7 +47,12 @@ const Reviews = () => {
 
   return (
     <div>
-      <h1>Отзывы покупателей</h1>
+      <h1 className="feedback">Отзывы покупателей</h1>
+      {isLogged && (
+        <Link to="/my-reviews" className="my-reviews">
+          Посмотреть свои отзывы
+        </Link>
+      )}
       <input
         type="text"
         placeholder="Поиск по названию книги"

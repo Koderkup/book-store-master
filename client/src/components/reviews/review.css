@@ -23,6 +23,22 @@
 .filter-text {
   width: 100%;
   margin: 1.5% auto;
-  border: 1px solid #D0D0D0;
+  border: 1px solid #d0d0d0;
   border-radius: 8px;
+}
+.my-reviews {
+  padding: 0.5%;
+  background-color: #007BFF;
+  border: 1px solid #d0d0d0;
+  border-radius: 5px;
+  color: white;
+  margin: 2%;
+}
+
+.feedback {
+  width: 50%;
+  display: inline;
+}
+.myReviewsToEdit {
+  
 }

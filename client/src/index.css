@@ -70,6 +70,8 @@ button{
 
 @import url("./components/reviews/reviewForm.css");
 
+@import url("./components/reviews/myReviews.css");
+
 /* ----------------- Responsive ------------------ */
 @media (max-width: 820px){
   header .logo{

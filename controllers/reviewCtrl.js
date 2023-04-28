@@ -11,7 +11,9 @@ const reviewCtrl = {
   },
   getMyReviews: async (req, res) => {
     try {
-      const reviews = await Reviews.find({ user: req.user.id });
+      const reviews = await Reviews.find({ user: req.user.id }).populate(
+        "product"
+      );
       res.json(reviews);
     } catch (err) {
       res.status(500).json({ msg: err.message });
@@ -20,17 +22,15 @@ const reviewCtrl = {
 
   addReview: async (req, res) => {
     try {
-      console.log(req.body);
       const { author, text, rating, product } = req.body;
       const newReview = new Reviews({
         author,
         text,
         rating,
         product,
-        user: req.body.user ? req.body.user.id : null,
+        user: req.body.user,
       });
       const savedReview = await newReview.save();
-      console.log(savedReview);
       res.json(savedReview);
     } catch (err) {
       console.log(err);
@@ -39,10 +39,13 @@ const reviewCtrl = {
   },
   editReview: async (req, res) => {
     try {
-      const { author, text, rating } = req.body;
+      const { text, rating } = req.body;
+      if (rating < 1 || rating > 5) {
+       return res.status(400).json({ error: "Рейтинг должен быть от 1 до 5" });
+      }
       const updatedReview = await Reviews.findOneAndUpdate(
         { _id: req.params.id, user: req.user.id },
-        { author, text, rating },
+        { text, rating },
         { new: true }
       );
       if (!updatedReview) {

@@ -7,7 +7,6 @@ const ReviewForm = ({ productId, userId, author }) => {
   const [rating, setRating] = useState("");
   const [comment, setComment] = useState("");
   const [token] = state.token;
-
   const handleRatingChange = (event) => {
     setRating(event.target.value);
   };
