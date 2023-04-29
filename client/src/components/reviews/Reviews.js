@@ -8,6 +8,7 @@ const Reviews = () => {
   const [filterText, setFilterText] = useState("");
   const state = useContext(GlobalState);
   const [isLogged] = state.userAPI.isLogged;
+  const [isAdmin] = state.userAPI.isAdmin;
   const filteredReviews = reviews.filter((review) => {
     const bookTitle = review.product.title.toLowerCase();
     return bookTitle.includes(filterText.toLowerCase());
@@ -74,6 +75,10 @@ const Reviews = () => {
           <div className="reviewDate">
             Дата создания: {formatDate(review.createdAt)}
           </div>
+          {isAdmin && <div className="admin-block">
+            <button className="my-reviews">Удалить</button>
+            <button className="my-reviews">Забанить</button>
+          </div>}
         </div>
       ))}
     </div>
