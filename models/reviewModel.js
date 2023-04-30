@@ -14,6 +14,7 @@ const reviewSchema = new mongoose.Schema(
     isBanned: { type: Boolean, default: false },
     user: { type: mongoose.Schema.Types.ObjectId, ref: "Users" },
     bannedUser: { type: mongoose.Schema.Types.ObjectId, ref: "Users" },
+    isUserBanned: { type: Boolean, default: false },
   },
   { timestamps: true }
 );

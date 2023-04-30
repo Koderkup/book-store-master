@@ -48,7 +48,7 @@ const MyReviews = () => {
     };
 
     getMyReviews();
-  }, []);
+  }, [token]);
 
   const handleEdit = async (e, id, data, token) => {
     e.preventDefault();
@@ -90,6 +90,7 @@ const MyReviews = () => {
           <p>
             Название книги: <i>{review.product.title}</i>
           </p>
+          <span>Отзыв: </span>
           <textarea
             className="reviewEditTextarea"
             value={review.text}

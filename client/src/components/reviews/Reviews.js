@@ -9,11 +9,17 @@ const Reviews = () => {
   const state = useContext(GlobalState);
   const [isLogged] = state.userAPI.isLogged;
   const [isAdmin] = state.userAPI.isAdmin;
-  const filteredReviews = reviews.filter((review) => {
-    const bookTitle = review.product.title.toLowerCase();
-    return bookTitle.includes(filterText.toLowerCase());
-  });
+  const [token] = state.token;
 
+  const filteredReviews = reviews.filter(
+    ({ isUserBanned, product: { title } = {} }) =>
+      !isUserBanned && title?.toLowerCase().includes(filterText.toLowerCase())
+  );
+
+  const filteredAdminReviews = reviews.filter(({ product }) =>
+    product.title?.toLowerCase().includes(filterText.toLowerCase())
+  );
+  
   const handleFilterChange = (event) => {
     setFilterText(event.target.value);
   };
@@ -26,7 +32,26 @@ const Reviews = () => {
       console.error(err);
     }
   };
-
+  const handleDeleteReview = async (id) => {
+    try {
+      await axios.delete(`api/reviews/${id}`, {
+        headers: {
+          Authorization: token,
+        },
+      });
+      // Обновляем список отзывов после удаления
+      setReviews(reviews.filter((review) => review._id !== id));
+    } catch (error) {
+      if (error.response && error.response.status === 403) {
+        console.log(error.response.data);
+      } else if (error.response && error.response.status === 400) {
+        // проверяем, является ли ошибка ошибкой на сервере
+        alert(error.response.data.msg);
+      } else {
+        console.error(error);
+      }
+    }
+  };
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     const year = date.getFullYear();
@@ -37,6 +62,64 @@ const Reviews = () => {
     }`;
   };
 
+  const handleBanUser = async (reviewId, userId) => {
+    try {
+      const response = await axios.post(
+        "api/reviews/ban-user",
+        { reviewId, userId },
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+      const updatedReview = response.data;
+      setReviews(
+        reviews.map((review) => {
+          if (review._id === updatedReview._id) {
+            return updatedReview;
+          }
+          return review;
+        })
+      );
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        alert(error.response.data.msg);
+      } else {
+        console.error(error);
+      }
+    }
+    loadReviews();
+  };
+  const handleUnbanUser = async (reviewId) => {
+    try {
+      const response = await axios.post(
+        "api/reviews/unban-user",
+        { reviewId },
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+      const updatedReview = response.data;
+      setReviews(
+        reviews.map((review) => {
+          if (review._id === updatedReview._id) {
+            return updatedReview;
+          }
+          return review;
+        })
+      );
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        alert(error.response.data.msg);
+      } else {
+        console.error(error);
+      }
+    }
+    loadReviews();
+  };
   const formatRating = (rating) => {
     const stars = "✯";
     return ` ${stars.repeat(rating)}`;
@@ -45,15 +128,14 @@ const Reviews = () => {
   useEffect(() => {
     loadReviews();
   }, []);
-
   return (
     <div>
       <h1 className="feedback">Отзывы покупателей</h1>
-      {isLogged && (
+      {isLogged && !isAdmin ? (
         <Link to="/my-reviews" className="my-reviews">
           Посмотреть свои отзывы
         </Link>
-      )}
+      ) : null}
       <input
         type="text"
         placeholder="Поиск по названию книги"
@@ -61,26 +143,62 @@ const Reviews = () => {
         onChange={handleFilterChange}
         className="filter-text"
       />
-      {filteredReviews.map((review) => (
-        <div className="reviewContainer" key={review._id}>
-          <div className="reviewedName">
-            <i> Название книги: </i>
-            {review.product.title}
-          </div>
-          <div className="reviewText">Отзыв: {review.text}</div>
-          <div className="reviewRating">
-            Рейтинг: <span>{formatRating(review.rating)}</span>
-          </div>
-          <div className="reviewDate">Автор: {review.author}</div>
-          <div className="reviewDate">
-            Дата создания: {formatDate(review.createdAt)}
-          </div>
-          {isAdmin && <div className="admin-block">
-            <button className="my-reviews">Удалить</button>
-            <button className="my-reviews">Забанить</button>
-          </div>}
-        </div>
-      ))}
+      {isAdmin
+        ? filteredAdminReviews.map((review) => (
+            <div className="reviewContainer" key={review._id}>
+              <div className="reviewedName">
+                <i> Название книги: </i>
+                {review.product.title}
+              </div>
+              <div className="reviewText">Отзыв: {review.text}</div>
+              <div className="reviewRating">
+                Рейтинг: <span>{formatRating(review.rating)}</span>
+              </div>
+              <div className="reviewDate">Автор: {review.author}</div>
+              <div className="reviewDate">
+                Дата создания: {formatDate(review.createdAt)}
+              </div>
+              <div className="admin-block">
+                <button
+                  className="my-reviews"
+                  onClick={() => handleDeleteReview(review._id)}
+                >
+                  Удалить
+                </button>
+                {!review.isUserBanned ? (
+                  <button
+                    className="my-reviews"
+                    onClick={() => handleBanUser(review._id, review.user)}
+                  >
+                    Забанить
+                  </button>
+                ) : (
+                  <button
+                    className="my-reviews"
+                    onClick={() => handleUnbanUser(review._id)}
+                  >
+                    Разбанить
+                  </button>
+                )}
+              </div>
+            </div>
+          ))
+        : filteredReviews.map((review) => (
+            <div className="reviewContainer" key={review._id}>
+              <div className="reviewedName">
+                <i> Название книги: </i>
+                {review.product.title}
+              </div>
+              <div className="reviewText">Отзыв: {review.text}</div>
+              <div className="reviewRating">
+                Рейтинг: <span>{formatRating(review.rating)}</span>
+              </div>
+              <div className="reviewDate">Автор: {review.author}</div>
+              <div className="reviewDate">
+                Дата создания: {formatDate(review.createdAt)}
+              </div>
+            </div>
+          ))}
     </div>
   );
 };

@@ -34,7 +34,14 @@ const ReviewForm = ({ productId, userId, author }) => {
       setRating("");
       setComment("");
     } catch (error) {
-      console.error(error);
+      if (error.response && error.response.status === 403) {
+        alert(error.response.data.message);
+      } else if (error.response && error.response.status === 400) {
+        // проверяем, является ли ошибка ошибкой на сервере
+        alert(error.response.data.message);
+      } else {
+        console.error(error);
+      }
     }
   };
   return (

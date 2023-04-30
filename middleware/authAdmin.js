@@ -7,7 +7,7 @@ const authAdmin = async (req, res, next) => {
       _id: req.user.id,
     });
     if (user.role === 0)
-      return res.status(400).json({ msg: "Admin ресурс, в доступе отказано" });
+      return res.status(400).json({ msg: "Только для администраторов, в доступе отказано" });
 
     next();
   } catch (err) {

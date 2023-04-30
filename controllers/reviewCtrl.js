@@ -3,7 +3,7 @@ const Reviews = require("../models/reviewModel");
 const reviewCtrl = {
   getReviews: async (req, res) => {
     try {
-   const reviews = await Reviews.find().populate("product");
+      const reviews = await Reviews.find().populate("product");
       res.json(reviews);
     } catch (err) {
       res.status(500).json({ msg: err.message });
@@ -41,7 +41,7 @@ const reviewCtrl = {
     try {
       const { text, rating } = req.body;
       if (rating < 1 || rating > 5) {
-       return res.status(400).json({ error: "Рейтинг должен быть от 1 до 5" });
+        return res.status(400).json({ error: "Рейтинг должен быть от 1 до 5" });
       }
       const updatedReview = await Reviews.findOneAndUpdate(
         { _id: req.params.id, user: req.user.id },
@@ -78,6 +78,34 @@ const reviewCtrl = {
       if (!updatedReview) {
         return res.status(404).json({ msg: "Отзыв не найден" });
       }
+
+      // Обновляем статус isUserBanned для всех отзывов, оставленных пользователем, который был заблокирован
+      await Reviews.updateMany({ user: userId }, { isUserBanned: true });
+
+      res.json(updatedReview);
+    } catch (err) {
+      res.status(500).json({ msg: err.message });
+    }
+  },
+  // Контроллер для разблокировки пользователя
+  unbanUser: async (req, res) => {
+    try {
+      const { reviewId } = req.body;
+      const updatedReview = await Reviews.findOneAndUpdate(
+        { _id: reviewId },
+        { isBanned: false, bannedUser: undefined },
+        { new: true }
+      );
+      if (!updatedReview) {
+        return res.status(404).json({ msg: "Отзыв не найден" });
+      }
+
+      // Обновляем статус isUserBanned для всех отзывов, оставленных пользователем, который был разблокирован
+      await Reviews.updateMany(
+        { user: updatedReview.bannedUser },
+        { isUserBanned: false }
+      );
+
       res.json(updatedReview);
     } catch (err) {
       res.status(500).json({ msg: err.message });

@@ -8,6 +8,7 @@ function UserAPI(token) {
   const [history, setHistory] = useState([]);
   const [email, setEmail] = useState('')
   const [name, setName] = useState();
+
   useEffect(() => {
     if (token) {
       const getUser = async () => {
