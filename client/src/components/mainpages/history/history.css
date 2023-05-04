@@ -1,40 +1,104 @@
-.history-page{
-    overflow-x: auto;
+.history-page {
+  overflow-x: auto;
 }
-.history-page h2, h4{
-    text-align: center;
-    margin: 20px;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
+.history-page h2,
+h4 {
+  text-align: center;
+  margin: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
 }
-.history-page table{
-    margin: auto;
-    width: 100%;
+.history-page table {
+  margin: auto;
+  width: 100%;
 }
-.history-page table,th,tr,td{
-    border: 1px solid #ddd;
-    border-collapse: collapse;
+.history-page table,
+th,
+tr,
+td {
+  border: 1px solid #ddd;
+  border-collapse: collapse;
 }
-th, td{
-    text-align: center;
-    padding: 10px;
-    text-transform: capitalize;
+th,
+td {
+  text-align: center;
+  padding: 10px;
+  text-transform: capitalize;
 }
-table a{
-    color: rgb(3, 165, 206);
+table a {
+  color: rgb(3, 165, 206);
 }
 
-.history-page img{
-    width: 70px;
-    height: 100px;
-    object-fit: cover;
+.history-page img {
+  width: 70px;
+  height: 100px;
+  object-fit: cover;
 }
 .checkdox {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
 }
 .td {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.adminSearch {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .adminSearch {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 1em;
+  }
+}
+
+.adminBlockBtn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.adminSearchElement {
+  margin: 1%;
+}
+
+.adminSearchElement label {
+  margin: 1em;
+}
+
+.adminTd {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10%;
+}
+
+.adminTd input {
+  width: 20px;
+  display: inline;
+}
+
+.adminTd span {
+  width: 20%;
+}
+
+@media (max-width: 768px) {
+  .adminTd {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
 }
