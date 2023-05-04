@@ -3,6 +3,7 @@ import { GlobalState } from "../../../GlobalState";
 import axios from "axios";
 import { nanoid } from "nanoid";
 import QRCode from "react-qr-code";
+import Map from "./Map";
 
 function Cart() {
   const state = useContext(GlobalState);
@@ -210,6 +211,7 @@ function Cart() {
       ) : (
         ""
       )}
+      <Map/>
     </div>
   );
 }

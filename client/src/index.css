@@ -147,3 +147,9 @@ button{
     margin: 20px 0;
   }
 }
+
+.leaflet-container {
+  margin-top: 1em;
+  height: 400px;
+  width: 100%;
+}
