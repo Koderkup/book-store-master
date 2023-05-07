@@ -1,0 +1,29 @@
+.pagination {
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.page-item, .choice-page {
+    color: white;
+    background-color: #007BFF;
+    width: 3em;
+    text-align: center;
+    font-size: 1.4em;
+    height: 1.5em;
+    border-radius: 3px;
+    margin: 0.5em;
+}
+
+.page-item :hover {
+    cursor: pointer;
+}
+
+.pagination li.page-item a{
+  color: white !important;
+}
+
+.active {
+    border: 3px solid black;
+}

@@ -72,6 +72,8 @@ button{
 
 @import url("./components/reviews/myReviews.css");
 
+@import url("./components/reviews/pagination.css");
+
 /* ----------------- Responsive ------------------ */
 @media (max-width: 820px){
   header .logo{

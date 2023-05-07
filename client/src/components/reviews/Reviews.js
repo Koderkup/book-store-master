@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { GlobalState } from "../../GlobalState";
 import axios from "axios";
+import Pagination from "./Pagination";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -10,6 +11,8 @@ const Reviews = () => {
   const [isLogged] = state.userAPI.isLogged;
   const [isAdmin] = state.userAPI.isAdmin;
   const [token] = state.token;
+  const [reviewsPerPage] = useState(3);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const filteredReviews = reviews.filter(
     ({ isUserBanned, product: { title } = {} }) =>
@@ -19,7 +22,18 @@ const Reviews = () => {
   const filteredAdminReviews = reviews.filter(({ product }) =>
     product.title?.toLowerCase().includes(filterText.toLowerCase())
   );
-  
+
+  const lastReviewsIndex = currentPage * reviewsPerPage;
+  const firstReviewsIndex = lastReviewsIndex - reviewsPerPage;
+
+  const currentReviews = (
+    isAdmin ? filteredAdminReviews : filteredReviews
+  ).slice(firstReviewsIndex, lastReviewsIndex);
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
   const handleFilterChange = (event) => {
     setFilterText(event.target.value);
   };
@@ -125,9 +139,33 @@ const Reviews = () => {
     return ` ${stars.repeat(rating)}`;
   };
 
+  const nextPage = () =>
+    setCurrentPage((prev) => {
+      if (
+        prev ===
+        Math.ceil(
+          (isAdmin ? filteredAdminReviews : filteredReviews).length /
+            reviewsPerPage
+        )
+      ) {
+        return prev;
+      } else {
+        return prev + 1;
+      }
+    });
+  const prevPage = () =>
+    setCurrentPage((prev) => {
+      if (prev === 1) {
+        return prev;
+      } else {
+        return prev - 1;
+      }
+    });
+
   useEffect(() => {
     loadReviews();
   }, []);
+
   return (
     <div>
       <h1 className="feedback">Отзывы покупателей</h1>
@@ -144,7 +182,7 @@ const Reviews = () => {
         className="filter-text"
       />
       {isAdmin
-        ? filteredAdminReviews.map((review) => (
+        ? currentReviews.map((review) => (
             <div className="reviewContainer" key={review._id}>
               <div className="reviewedName">
                 <i> Название книги: </i>
@@ -183,7 +221,7 @@ const Reviews = () => {
               </div>
             </div>
           ))
-        : filteredReviews.map((review) => (
+        : currentReviews.map((review) => (
             <div className="reviewContainer" key={review._id}>
               <div className="reviewedName">
                 <i> Название книги: </i>
@@ -199,6 +237,14 @@ const Reviews = () => {
               </div>
             </div>
           ))}
+      <Pagination
+        reviewsPerPage={reviewsPerPage}
+        totalReviews={(isAdmin ? filteredAdminReviews : filteredReviews).length}
+        paginate={paginate}
+        prevPage={prevPage}
+        nextPage={nextPage}
+        currentPage={currentPage}
+      />
     </div>
   );
 };

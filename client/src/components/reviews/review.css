@@ -4,28 +4,34 @@
   padding: 20px;
   margin-bottom: 20px;
 }
+
 .reviewedName {
   font-weight: bold;
   margin-bottom: 10px;
 }
+
 .reviewText {
   font-size: 16px;
 }
+
 .reviewRating span {
   font-size: 32px;
   color: yellow;
   padding-top: 1%;
 }
+
 .reviewDate {
   margin-top: 10px;
   font-style: italic;
 }
+
 .filter-text {
   width: 100%;
   margin: 1.5% auto;
   border: 1px solid #d0d0d0;
   border-radius: 8px;
 }
+
 .my-reviews {
   padding: 0.5%;
   background-color: #007BFF;
@@ -39,6 +45,5 @@
   width: 50%;
   display: inline;
 }
-.myReviewsToEdit {
-  
-}
+
+.myReviewsToEdit {}
