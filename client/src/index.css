@@ -44,25 +44,25 @@ button{
 
 /* ------------- Products -------------- */
 
-@import url("./components/mainpages/products/products.css");
+@import url("./components/pages/products/products.css");
 
 /* ---------------- Detail Product --------------- */
-@import url("./components/mainpages/detailProduct/detailProduct.css");
+@import url("./components/pages/detailProduct/detailProduct.css");
 
 /* ------------- Login/Register ----------------- */
-@import url("./components/mainpages/auth/login.css");
+@import url("./components/pages/auth/login.css");
 
 /* ------------ Cart ------------------- */
-@import url("./components/mainpages/cart/cart.css");
+@import url("./components/pages/cart/cart.css");
 
 /* --------------- History ------------------- */
-@import url("./components/mainpages/history/history.css");
+@import url("./components/pages/history/history.css");
 
 /* ------------------ Categories ------------------ */
-@import url("./components/mainpages/categories/categories.css");
+@import url("./components/pages/categories/categories.css");
 
 /* ------------------- Create Product -------------- */
-@import url("./components/mainpages/createProduct/createProduct.css");
+@import url("./components/pages/createProduct/createProduct.css");
 
 /* ----------------Reviews------------------------------------------ */
 

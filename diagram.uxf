@@ -1,0 +1,43 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Гость
+</help_text><element><id>UMLActor</id><coordinates><x>760</x><y>30</y><w>60</w><h>120</h></coordinates><panel_attributes>Гость
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>50</x><y>30</y><w>450</w><h>180</h></coordinates><panel_attributes>Функционал для "Гостя":
+--
+-Просмотр каталога книг
+-Регистрация
+-Постепенная загрузка каталога книг
+-Фильтрация книг по названию, по жанру, по дате поступления,
+ по лучшим продажам
+-Смотреть отзывы о товарах
+-Фильтровть отзывы по названию книг
+-Пагинация страниц отзывов
+-Детальный просмотр товара с предложением по похожим товарам
+-Обратная связь с продавцом в соцсетях</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLActor</id><coordinates><x>710</x><y>220</y><w>240</w><h>110</h></coordinates><panel_attributes>Зарегистрированный пользователь</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLActor</id><coordinates><x>770</x><y>530</y><w>120</w><h>110</h></coordinates><panel_attributes>Администратор</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>490</x><y>260</y><w>350</w><h>90</h></coordinates><panel_attributes>lt=.&gt;
+&lt;&lt;extends&gt;&gt;</panel_attributes><additional_attributes>330;10;10;70</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>40</x><y>230</y><w>460</w><h>200</h></coordinates><panel_attributes>Функционал для зарег. пользователя:
+--
+-аутентификации и авторизация
+-Возможность оставлять товары в корзине и удалять их
+-Возможность совершить покупку выбрав тип оплаты: наличными 
+приполучении
+в пункте выдачи, либо по б/н с помощью QR code и книга будет доставлена 
+курьером по указанному адресу
+-Возможность просматривать историю своих покупок с детализацией 
+по каждому заказу
+-Возможность просматривать оставлять и редактировать отзывы 
+по купленным товарам с выставление рейтинга
+-Обратная связь с продавцом в соцсетях и почте</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>40</x><y>450</y><w>460</w><h>190</h></coordinates><panel_attributes>Функционал для администратора:
+--
+-аутентификации и авторизация как администратор
+-Возможность удалять, добавлять и редактировать товары
+-Возможность удалять, добавлять и редактировать категории товаров
+-Возможность менять статус заказанного покупателем товара 
+(только полученые товары пользователь увидит в своей истроии покупок) 
+-Возможность удалить заказ если покупатель передумал
+-Возможность фильтрации истории покупок или заказов пользователей 
+по дате либо по имени пользователя
+-просмотр и удаление отзывов
+-bann/unbann  пользователя
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>490</x><y>560</y><w>350</w><h>70</h></coordinates><panel_attributes>lt=.&gt;
+&lt;&lt;extends&gt;&gt;</panel_attributes><additional_attributes>330;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>490</x><y>70</y><w>310</w><h>60</h></coordinates><panel_attributes>lt=.&gt;
+&lt;&lt;includes&gt;&gt;</panel_attributes><additional_attributes>290;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>490</x><y>390</y><w>350</w><h>200</h></coordinates><panel_attributes>lt=.&gt;
+&lt;&lt;includes&gt;&gt;</panel_attributes><additional_attributes>330;180;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>490</x><y>180</y><w>360</w><h>110</h></coordinates><panel_attributes>lt=.&gt;
+&lt;&lt;includes&gt;&gt;</panel_attributes><additional_attributes>340;90;10;10</additional_attributes></element></diagram>
