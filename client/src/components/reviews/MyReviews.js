@@ -73,7 +73,7 @@ const MyReviews = () => {
     }
   };
   return (
-    <div className="myReviewsToEdit">
+    <div className="myReviewsToEdit" data-testid="my-reviews">
       {reviews.map((review) => (
         <form
           key={review._id}

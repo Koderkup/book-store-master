@@ -5,7 +5,7 @@ import { ReactComponent as Instagram } from "../../components/headers/icon/Insta
 import {ReactComponent as Telegram } from "../../components/headers/icon/Telegram.svg";
 const Footer = () => {
   return (
-    <div className="footer">
+    <div className="footer" data-testid="footer">
       <div className="container">
         <div className="row">
           <h3>О нас</h3>

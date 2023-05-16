@@ -2,17 +2,17 @@ import React from "react";
 import { screen, fireEvent, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Header from "./Header";
-import renderWithProviders from "../../components/mainpages/utils/renderWithProviders";
+import renderWithProviders from "../../components/pages/utils/renderWithProviders";
 
 
-  jest.mock("../mainpages/auth/Login", () => ({
+  jest.mock("../pages/auth/Login", () => ({
     __esModule: true,
     default: () => {
       return <div data-testid="registration-form">Login</div>;
     },
   }));
 
-  jest.mock("../mainpages/auth/Register", () => ({
+  jest.mock("../pages/auth/Register", () => ({
     __esModule: true,
     default: () => {
       return <div data-testid="registration-form" />;
