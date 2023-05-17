@@ -2,17 +2,23 @@ import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { GlobalState } from "../../../GlobalState";
 import ReviewForm from "../../reviews/ReviewForm";
+
 function OrderDetails() {
   const state = useContext(GlobalState);
   const [history] = state.userAPI.history;
   const [orderDetails, setOrderDetails] = useState([]);
   const [isLogged] = state.userAPI.isLogged;
   const [productId, setProductId] = useState("");
-  const [selectedValue, setSelectedValue] = useState("");
+  const [selectedValue, setSelectedValue] = useState('');
   const params = useParams();
 
-  function handleCheckboxChange(event) {
-    setSelectedValue(event.target.value);
+  function handleCheckboxChange(e) {
+    if(!selectedValue){
+ setSelectedValue(e.target.value);
+    } else {
+      setSelectedValue('');
+    }
+   
   }
   useEffect(() => {
     if (params.id) {
@@ -80,12 +86,12 @@ function OrderDetails() {
               </td>
               <td>{item.title}</td>
               <td>{item.quantity}</td>
-              <td>руб {item.price * item.quantity}</td>
+              <td>руб {(item.price * item.quantity).toFixed(2)}</td>
             </tr>
           ))}
         </tbody>
       </table>
-      {isLogged && productId ? (
+      {(isLogged && productId && selectedValue) ? (
         <ReviewForm
           productId={productId}
           userId={orderDetails.user_id}

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useCallback} from "react";
 import { GlobalState } from "../../../GlobalState";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -15,7 +15,8 @@ function OrderHistory() {
   const [userName, setUserName] = useState("");
   const [selectedPayments, setSelectedPayments] = useState([]);
   const [orderNumber, setOrderNumber] = useState();
-  const getHistory = async () => {
+  
+  const getHistory = useCallback(async () => {
     let url = "";
     if (isAdmin) {
       url = "/api/payment";
@@ -39,16 +40,18 @@ function OrderHistory() {
       params,
     });
     setHistory(res.data.filter((items) => filterHistoryItems(items, isAdmin)));
-    setSelectedPayments([]);
     setOrderNumber(history.length);
-  };
+  });
+  
   useEffect(() => {
     if (token) {
       getHistory();
     }
-  }, [token, isAdmin, setHistory, getHistory]);
+  }, [token, getHistory]);
+
   const handleDelete = async () => {
     const selectedIds = selectedPayments.map((payment) => payment._id);
+    console.log(selectedIds)
     const res = await axios.delete("/api/payment", {
       headers: { Authorization: token, "Content-Type": "application/json" },
       data: { ids: selectedIds },
@@ -66,14 +69,7 @@ function OrderHistory() {
       { paymentId, status: newStatus },
       { headers: { Authorization: token } }
     );
-    /* if (res.data.success) {
-      const updatedHistory = [...history];
-      const paymentToUpdate = updatedHistory.find(
-        (payment) => payment._id === paymentId
-      );
-      paymentToUpdate.status = newStatus;
-      setHistory(updatedHistory);
-     }*/
+    
   };
 
   const filterHistoryItems = (items, isAdmin) => {
@@ -157,13 +153,13 @@ function OrderHistory() {
                   <span> Status </span>
                   <input
                     type="checkbox"
-                    checked={selectedPayments.includes(items)}
+                    checked={selectedPayments.some((p) => p._id === items._id)}
                     onChange={(e) => {
                       if (e.target.checked) {
                         setSelectedPayments([...selectedPayments, items]);
                       } else {
                         setSelectedPayments(
-                          selectedPayments.filter((p) => p !== items)
+                          selectedPayments.filter((p) => p._id !== items._id)
                         );
                       }
                     }}
