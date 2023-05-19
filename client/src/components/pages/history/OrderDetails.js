@@ -32,7 +32,7 @@ function OrderDetails() {
 
   return (
     <div className="history-page">
-      <table>
+      <table data-testid="table">
         <thead>
           <tr>
             <th>Имя</th>
@@ -81,8 +81,9 @@ function OrderDetails() {
                     setProductId(item._id);
                     handleCheckboxChange(e);
                   }}
+                  data-testid="checkbox"
                 />
-                <img src={item.images.url} alt="" />
+                <img src={item.images.url} alt="Product 1" />
               </td>
               <td>{item.title}</td>
               <td>{item.quantity}</td>
@@ -91,7 +92,7 @@ function OrderDetails() {
           ))}
         </tbody>
       </table>
-      {(isLogged && productId && selectedValue) ? (
+      {isLogged && productId && selectedValue ? (
         <ReviewForm
           productId={productId}
           userId={orderDetails.user_id}

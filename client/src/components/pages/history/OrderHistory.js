@@ -39,9 +39,16 @@ function OrderHistory() {
       headers: { Authorization: token },
       params,
     });
-    setHistory(res.data.filter((items) => filterHistoryItems(items, isAdmin)));
-    setOrderNumber(history.length);
-  });
+    if (Array.isArray(res.data)) {
+      setHistory(
+        res.data.filter((items) => filterHistoryItems(items, isAdmin))
+      );
+      console.log(history)
+      setOrderNumber(history.length);
+    } else {
+      console.log("Неправильный формат данных");
+    }
+  }, [isAdmin, startDate, endDate, userName, token, setHistory]);
   
   useEffect(() => {
     if (token) {
@@ -49,9 +56,11 @@ function OrderHistory() {
     }
   }, [token, getHistory]);
 
+  useEffect(() => {
+    setOrderNumber(history.length);
+  }, [history]);
   const handleDelete = async () => {
     const selectedIds = selectedPayments.map((payment) => payment._id);
-    console.log(selectedIds)
     const res = await axios.delete("/api/payment", {
       headers: { Authorization: token, "Content-Type": "application/json" },
       data: { ids: selectedIds },
@@ -81,29 +90,35 @@ function OrderHistory() {
   };
 
   return (
-    <div className="history-page">
+    <div className="history-page" data-testid="history-page">
       <h2>История</h2>
       {isAdmin && (
         <div className="adminSearch">
           <div className="adminSearchElement">
-            <label>Начальная дата:</label>
+            <label htmlFor="startDateInput">Начальная дата:</label>
             <input
+              id="startDateInput"
+              name="startDateInput"
               type="date"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
             />
           </div>
           <div className="adminSearchElement">
-            <label>Конечная дата:</label>
+            <label htmlFor="endDateInput">Конечная дата:</label>
             <input
+              id="endDateInput"
+              name="endDateInput"
               type="date"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
             />
           </div>
           <div className="adminSearchElement">
-            <label>Имя пользователя:</label>
+            <label htmlFor="userNameInput">Имя пользователя:</label>
             <input
+              id="userNameInput"
+              name="userNameInput"
               type="text"
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
@@ -134,41 +149,44 @@ function OrderHistory() {
           </tr>
         </thead>
         <tbody>
-          {history.map((items) => (
-            <tr key={items._id}>
-              <td>{items.paymentID}</td>
-              <td>{new Date(items.createdAt).toLocaleDateString()}</td>
-              <td>
-                <Link to={`/history/${items._id}`}>Смотреть</Link>
-              </td>
-              {isAdmin && (
-                <td className="adminTd">
-                  <input
-                    type="checkbox"
-                    onChange={(e) => {
-                      handleStatus(e, items);
-                    }}
-                    checked={items.status}
-                  ></input>
-                  <span> Status </span>
-                  <input
-                    type="checkbox"
-                    checked={selectedPayments.some((p) => p._id === items._id)}
-                    onChange={(e) => {
-                      if (e.target.checked) {
-                        setSelectedPayments([...selectedPayments, items]);
-                      } else {
-                        setSelectedPayments(
-                          selectedPayments.filter((p) => p._id !== items._id)
-                        );
-                      }
-                    }}
-                  />
-                  <span>Удаляем</span>
+          {Array.isArray(history) &&
+            history.map((items) => (
+              <tr key={items._id}>
+                <td>{items.paymentID}</td>
+                <td>{new Date(items.createdAt).toLocaleDateString()}</td>
+                <td>
+                  <Link to={`/history/${items._id}`}>Смотреть</Link>
                 </td>
-              )}
-            </tr>
-          ))}
+                {isAdmin && (
+                  <td className="adminTd">
+                    <input
+                      type="checkbox"
+                      onChange={(e) => {
+                        handleStatus(e, items);
+                      }}
+                      checked={items.status}
+                    ></input>
+                    <span> Status </span>
+                    <input
+                      type="checkbox"
+                      checked={selectedPayments.some(
+                        (p) => p._id === items._id
+                      )}
+                      onChange={(e) => {
+                        if (e.target.checked) {
+                          setSelectedPayments([...selectedPayments, items]);
+                        } else {
+                          setSelectedPayments(
+                            selectedPayments.filter((p) => p._id !== items._id)
+                          );
+                        }
+                      }}
+                    />
+                    <span>Удаляем</span>
+                  </td>
+                )}
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>
