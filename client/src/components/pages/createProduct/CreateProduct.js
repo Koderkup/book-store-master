@@ -64,7 +64,7 @@ function CreateProduct() {
 
       if (file.type !== "image/jpeg" && file.type !== "image/png")
         // 1mb
-        return alert("Файл формат не поддерживается");
+        return alert("Формат файла не поддерживается");
 
       let formData = new FormData();
       formData.append("file", file);
@@ -140,9 +140,15 @@ function CreateProduct() {
     display: images ? "block" : "none",
   };
   return (
-    <div className="create_product">
+    <div className="create_product" data-testid="create-product-component">
       <div className="upload">
-        <input type="file" name="file" id="file_up" onChange={handleUpload} />
+        <input
+          type="file"
+          name="file"
+          id="file_up"
+          onChange={handleUpload}
+          data-testid="file"
+        />
         {loading ? (
           <div id="file_img">
             <Loading />
@@ -155,10 +161,11 @@ function CreateProduct() {
         )}
       </div>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} data-testid="create-product-form">
         <div className="row">
           <label htmlFor="product_id">Товар ID</label>
           <input
+            data-testid="product_id"
             type="text"
             name="product_id"
             id="product_id"
@@ -209,6 +216,7 @@ function CreateProduct() {
         <div className="row">
           <label htmlFor="author">Автор</label>
           <textarea
+            data-testid="author"
             type="text"
             name="author"
             id="author"
@@ -222,6 +230,7 @@ function CreateProduct() {
         <div className="row">
           <label htmlFor="categories">Категории: </label>
           <select
+            data-testid="categories"
             name="category"
             value={product.category}
             onChange={handleChangeInput}
