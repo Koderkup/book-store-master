@@ -1,19 +1,19 @@
- import React, { useContext, useState } from "react";
- import { GlobalState } from "../../../GlobalState";
- import ProductItem from "../utils/productItem/ProductItem";
- import Loading from "../utils/loading/Loading";
- import axios from "axios";
- import Filters from "./Filters";
- import LoadMore from "./LoadMore";
+import React, { useContext, useState } from "react";
+import { GlobalState } from "../../../GlobalState";
+import ProductItem from "../utils/productItem/ProductItem";
+import Loading from "../utils/loading/Loading";
+import axios from "axios";
+import Filters from "./Filters";
+import LoadMore from "./LoadMore";
 
- function Products() {
+function Products() {
   const state = useContext(GlobalState);
   const [products, setProducts] = state.productsAPI.products;
-   const [isAdmin] = state.userAPI.isAdmin;
-   const [token] = state.token;
-   const [callback, setCallback] = state.productsAPI.callback;
-   const [loading, setLoading] = useState(false);
-   const [isCheck, setIsCheck] = useState(false);
+  const [isAdmin] = state.userAPI.isAdmin;
+  const [token] = state.token;
+  const [callback, setCallback] = state.productsAPI.callback;
+  const [loading, setLoading] = useState(false);
+  const [isCheck, setIsCheck] = useState(false);
 
   const handleCheck = (id) => {
     products.forEach((product) => {
@@ -62,19 +62,18 @@
   if (loading)
     return (
       <div>
-         <Loading /> 
+        <Loading />
       </div>
     );
   return (
     <>
-   
       <Filters />
 
       {isAdmin && (
         <div className="delete-all">
           <span>Выбрать все</span>
-          <input type="checkbox" checked={isCheck} onChange={checkAll} />
-          <button onClick={deleteAll}>Удалить все</button>
+          <input type="checkbox" checked={isCheck} onChange={checkAll} data-testid="select-all"/>
+          <button onClick={deleteAll} data-testid="delete-all">Удалить все</button>
         </div>
       )}
       <div className="products">
@@ -95,6 +94,6 @@
       {products.length === 0 && <Loading />}
     </>
   );
- }
+}
 
- export default Products;
+export default Products;
