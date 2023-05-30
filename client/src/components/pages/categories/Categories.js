@@ -65,6 +65,7 @@ function Categories() {
         <label htmlFor="category">Категория</label>
         <input
           type="text"
+          id="category"
           name="category"
           value={category}
           required

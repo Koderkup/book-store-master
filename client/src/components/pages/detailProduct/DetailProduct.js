@@ -18,7 +18,7 @@ function DetailProduct() {
     }
   }, [params.id, products]);
 
-  if (detailProduct.length === 0) return null;
+  if (detailProduct.length === 0) return <div>...Loading</div>;
 
   return (
     <>
@@ -44,7 +44,6 @@ function DetailProduct() {
           ) : null}
         </div>
       </div>
-
       <div>
         <h2>Похожие товары</h2>
         <div className="products">
