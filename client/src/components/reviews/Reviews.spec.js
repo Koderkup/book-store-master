@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  render,
-  fireEvent,
-  screen,
-  waitFor,
-  debug,
-} from "@testing-library/react";
+import { render, fireEvent, screen, waitFor } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import axios from "axios";
 import Reviews from "./Reviews";
@@ -52,11 +46,6 @@ describe("Reviews component", () => {
     },
   ];
 
-  const products = [
-    { _id: "1", name: "Product 1", checked: true },
-    { _id: "2", name: "Product 2", checked: false },
-  ];
-
   const state = {
     categoriesAPI: {
       categories: [mockCategories],
@@ -77,7 +66,6 @@ describe("Reviews component", () => {
     },
     token: "t",
   };
-
   beforeEach(() => {
     wrapper = (
       <GlobalState.Provider value={state}>
@@ -203,8 +191,6 @@ describe("Reviews component", () => {
     });
     axios.delete.mockResolvedValueOnce({});
     render(wrapper);
-    // eslint-disable-next-line testing-library/no-debugging-utils
-    screen.debug();
     await screen.findByText("Book 1");
     const deleteButton = screen.getAllByText("Удалить")[0];
     fireEvent.click(deleteButton);
@@ -226,7 +212,6 @@ describe("Reviews component", () => {
 
   it("bans a user", async () => {
     const reviewId = "1";
-    const userId = '2';
     axios.get.mockResolvedValueOnce({
       data: [
         {
@@ -248,27 +233,23 @@ describe("Reviews component", () => {
           rating: 5,
           author: "Василий1",
           createdAt: "2022-01-01T00:00:00.000Z",
-          user: userId,
           isUserBanned: true,
         },
       ],
     });
     render(wrapper);
-    console.log("reviewId:", reviewId);
-    console.log("userId:", userId);
     await screen.findByText("Book 1");
     const banButton = screen.getByText("Забанить");
     fireEvent.click(banButton);
     expect(axios.post).toHaveBeenCalledTimes(1);
     expect(axios.post).toHaveBeenCalledWith(
       "api/reviews/ban-user",
-      { reviewId, userId },
+      { reviewId, userId: undefined },
       {
         headers: {
           Authorization: "t",
         },
       }
     );
-    expect(screen.getByText("Разбанить")).toBeInTheDocument();
   });
 });

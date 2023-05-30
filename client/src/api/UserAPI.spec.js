@@ -7,21 +7,7 @@ jest.mock("axios");
 describe("UserAPI Component", () => {
   afterEach(() => {
     jest.resetAllMocks();
-  });
-
-  // it("displays error message if request for user data fails", async () => {
-  //   jest.setTimeout(10000);
-  //   axios.get.mockRejectedValueOnce(new Error("Request failed"));
-  //   const { waitForNextUpdate, result } = renderHook(() => UserAPI(false));
-  //   console.log(result.current);
-  //   global.alert = jest.fn();
-  //   act(async () => {
-  //     await waitForNextUpdate();
-  //   });
-  //   expect(global.alert).toHaveBeenCalledTimes(1);
-  //   expect(global.alert).toHaveBeenCalledWith("Request failed");
-  // });
-  
+  });  
 
   it("sets isLogged to true if user is logged in", async () => {
     axios.get.mockResolvedValueOnce({
