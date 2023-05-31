@@ -95,7 +95,6 @@ describe("CreateProduct component", () => {
       },
     });
     const handleSubmit = jest.fn();
-    const handleChangeInput = jest.fn();
     render(
       <GlobalState.Provider value={mockState}>
         <MemoryRouter initialEntries={["/create_product"]}>

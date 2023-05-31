@@ -28,7 +28,7 @@ function OrderDetails() {
     }
   }, [params.id, history]);
 
-  if (orderDetails.length === 0) return null;
+  if (orderDetails.length === 0) return <div>history page</div>;
 
   return (
     <div className="history-page">

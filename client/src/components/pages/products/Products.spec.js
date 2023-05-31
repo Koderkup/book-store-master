@@ -2,9 +2,7 @@ import React from "react";
 import {
   render,
   screen,
-  fireEvent,
-  waitFor,
-  act,
+  fireEvent
 } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { MemoryRouter } from "react-router-dom";
@@ -64,11 +62,6 @@ describe("Products component", () => {
       quantity: 20,
       images: { url: "http://example.com/image2.jpg", public_id: "2" },
     },
-  ];
-
-  const products = [
-    { _id: "1", name: "Product 1", checked: true },
-    { _id: "2", name: "Product 2", checked: false },
   ];
 
   const state = {

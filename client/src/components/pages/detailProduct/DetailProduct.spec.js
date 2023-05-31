@@ -50,19 +50,6 @@ const mockState = {
   detailProduct: mockProducts[0],
 };
 
-const detailProduct = [
-  {
-    _id: "1",
-    title: "Product 1",
-    images: { url: "image1.jpg" },
-    price: 100,
-    description: "Description 1",
-    author: "Author 1",
-    sold: 5,
-    quantity: 10,
-    category: "category1",
-  },
-];
 
 
 describe("DetailProduct component", () => {

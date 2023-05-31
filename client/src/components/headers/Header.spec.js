@@ -76,16 +76,6 @@ describe("Header", () => {
     expect(adminLink).toBeInTheDocument();
   });
 
-  // it('logs out user on click on logout button', async () => {
-  //    jest.setTimeout(10000);
-  //    renderWithProviders(<Header />, mockValueTrue);
-  //    const logoutButton = screen.getByText((text) => text === /login/i);
-  //    userEvent.click(logoutButton);
-  //    await waitFor(() => {
-  //      expect(screen.getByText(/login/i)).toBeInTheDocument();
-  //    }); 
-  // });
-
   it('displays correct menu items for admin', () => {
     renderWithProviders(<Header />, mockValueTrue);
     const createProductLink = screen.getByText(/создать товар/i);
@@ -106,7 +96,6 @@ describe("Header", () => {
     await waitFor(
       () => {
         expect(window.location.pathname).toBe("/login");
-        //expect(screen.getByTestId("registration-form")).toBeInTheDocument();
       }
     );
   });
