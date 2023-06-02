@@ -27,7 +27,7 @@ function Filters() {
           <option value="">Все товары</option>
           {Array.isArray(categories) &&
             categories.map((category) => (
-              <option value={"category=" + category.name} key={category._id}>
+              <option value={"category=" + category._id} key={category._id}>
                 {category.name}
               </option>
             ))}

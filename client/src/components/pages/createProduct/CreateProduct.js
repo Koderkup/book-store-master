@@ -35,6 +35,7 @@ function CreateProduct() {
   const [callback, setCallback] = state.productsAPI.callback;
 
   useEffect(() => {
+    
     if (param.id) {
       setOnEdit(true);
       products.forEach((product) => {
