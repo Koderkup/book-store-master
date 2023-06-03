@@ -1,4 +1,4 @@
-<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>540</x><y>410</y><w>170</w><h>290</h></coordinates><panel_attributes>Products
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>540</x><y>380</y><w>170</w><h>290</h></coordinates><panel_attributes>Products
 --
 _id 
 - product_id 
@@ -17,7 +17,7 @@ _id
 getProducts()
 updateProduct() 
 deleteProduct()
-createProduct()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>750</x><y>50</y><w>210</w><h>150</h></coordinates><panel_attributes>Category
+createProduct()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>750</x><y>20</y><w>210</w><h>150</h></coordinates><panel_attributes>Category
 --
  _id 
 name
@@ -27,7 +27,7 @@ updatedAt
 getCategory()
 updateCategory() 
 deleteCategory()
-createCategory()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>290</x><y>30</y><w>210</w><h>410</h></coordinates><panel_attributes>Payments
+createCategory()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>290</x><y>0</y><w>210</w><h>410</h></coordinates><panel_attributes>Payments
 --
 id 
 user_id 
@@ -58,7 +58,7 @@ getPayments()
 createPayment()
 deletePayments()
 getQrCodeString()
-updateStatus()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>840</x><y>390</y><w>210</w><h>260</h></coordinates><panel_attributes>Users
+updateStatus()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>840</x><y>360</y><w>210</w><h>260</h></coordinates><panel_attributes>Users
 --
 _id 
  name
@@ -76,7 +76,7 @@ getUser()
 refreshToken()
 addCart()
 history()
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>540</x><y>50</y><w>210</w><h>300</h></coordinates><panel_attributes>Reviews
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>540</x><y>20</y><w>210</w><h>300</h></coordinates><panel_attributes>Reviews
 --
  _id 
  author
@@ -97,7 +97,7 @@ editReview()
 deleteReview()
 banUser()
 unbanUser()
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>700</x><y>420</y><w>30</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>490</x><y>30</y><w>30</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>700</x><y>410</y><w>160</w><h>160</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;140;50;80;50;10;140;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>60</x><y>340</y><w>210</w><h>70</h></coordinates><panel_attributes>Login
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>700</x><y>390</y><w>30</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>490</x><y>0</y><w>30</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>700</x><y>380</y><w>160</w><h>160</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;140;50;80;50;10;140;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>60</x><y>310</y><w>210</w><h>70</h></coordinates><panel_attributes>Login
 --
 None 
 + render(): JSX.Element</panel_attributes><additional_attributes></additional_attributes></element></diagram>

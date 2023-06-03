@@ -41,7 +41,6 @@ function Cart() {
       const response = await axios.get(`/api/payment/qrcode/${total}/`, {
         headers: { Authorization: token },
       });
-      console.log(response.data.msg);
       setValue(response.data.msg);
     } catch (err) {
       if (err.response && err.response.data) {

@@ -43,7 +43,6 @@ function OrderHistory() {
       setHistory(
         res.data.filter((items) => filterHistoryItems(items, isAdmin))
       );
-      console.log(history)
       setOrderNumber(history.length);
     } else {
       console.log("Неправильный формат данных");
@@ -78,7 +77,7 @@ function OrderHistory() {
       { paymentId, status: newStatus },
       { headers: { Authorization: token } }
     );
-    
+      getHistory();
   };
 
   const filterHistoryItems = (items, isAdmin) => {
