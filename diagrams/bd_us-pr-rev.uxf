@@ -1,0 +1,92 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes-</help_text><element><id>UMLClass</id><coordinates><x>60</x><y>30</y><w>240</w><h>440</h></coordinates><panel_attributes>Reviews
+--
+{
+  "_id": {
+    "$oid": "644d2d2b302ea95c6450100c"
+  },
+  "author": "Василий",
+  "text": "Отличная книга! Читается
+ на одном дыхании. 
+  "rating": 3,
+-
+  "product": {
+    "$oid": "63ca926191fda3c69fae7ea3"
+  },
+--
+  "isBanned": true,
+--
+  "user": {
+    "$oid": "63932a75b0abfae3a157687a"
+  },
+--
+  "isUserBanned": false,
+  "createdAt": {
+    "$date": "2023-04-29T14:43:55.682Z"
+  },
+  "updatedAt": {
+    "$date": "2023-05-24T08:11:17.707Z"
+  },
+  "__v": 0,
+--
+  "bannedUser": {
+    "$oid": "63932a75b0abfae3a157687a"
+  }
+}</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>360</x><y>80</y><w>230</w><h>390</h></coordinates><panel_attributes>Users
+--
+{
+  "_id": {
+    "$oid": "63932a75b0abfae3a157687a"
+  },
+--
+  "name": "Василий",
+  "email": "vasya@mail.ru",
+  "password": "$2b$10$A9e.zjTMwVm.......",
+  "role": 0,
+  "cart": [
+-
+    {
+      "_id": "63ca926191fda3c69fae7ea3",
+--
+      "product_id": "7f89rt",
+     ...
+      },
+  ],
+  "createdAt": {
+    "$date": "2022-12-09T12:30:46.013Z"
+  },
+  "updatedAt": {
+    "$date": "2023-05-17T14:27:16.423Z"
+  },
+  "__v": 0
+}</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>610</x><y>30</y><w>260</w><h>440</h></coordinates><panel_attributes>Products
+--
+{
+  "_id": {
+    "$oid": 63ca926191fda3c69fae7ea3"
+  }, 
+--
+  "product_id": "7f89rt",
+  "title": "Книга о деньгах",
+  "price": 2.5,
+  "description": "интересная книга",
+  "author": "Росс Стабо",
+  "images": {
+    "public_id": "test/aucrwwiehn0gqv8xr43b",
+    "url": "https://res.cloudinary.com/......"
+  },
+--
+  "category": {
+    "$oid": "639c63baaa67678801a9ec68"
+  },
+--
+  "quantity": 1,
+  "checked": false,
+  "sold": 2,
+  "createdAt": {
+    "$date": "2023-01-20T13:08:49.659Z"
+  },
+  "updatedAt": {
+    "$date": "2023-06-02T17:02:49.083Z"
+  },
+  "__v": 0
+}</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>10</x><y>80</y><w>920</w><h>450</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>860;10;900;10;900;430;10;430;10;110;50;110</additional_attributes></element><element><id>Relation</id><coordinates><x>290</x><y>120</y><w>90</w><h>170</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>70;10;40;10;40;150;10;150</additional_attributes></element><element><id>Relation</id><coordinates><x>290</x><y>260</y><w>60</w><h>210</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;190;40;190;40;10</additional_attributes></element></diagram>

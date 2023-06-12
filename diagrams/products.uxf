@@ -1,0 +1,79 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>
+</help_text><element><id>UMLClass</id><coordinates><x>480</x><y>30</y><w>120</w><h>200</h></coordinates><panel_attributes>Products
+--
++products
++isAdmin
++token
++callbeck
++loading
++isCheck
+--
++ deleteProduct()
+ + handleCheck()
++ checkAll() 
++ deleteAll() 
++ render()
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>660</x><y>30</y><w>120</w><h>110</h></coordinates><panel_attributes>ProductItem
+--
++products
++isAdmin
+--
++deleteProducts()
++handleCheck()
+ + render() </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>140</x><y>230</y><w>110</w><h>170</h></coordinates><panel_attributes>Filters
+--
++ products
++sort
++search
++price
+--
++ setProducts()
++setSort()
++setSearch()
++setPrice()
++ render() </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>340</x><y>200</y><w>100</w><h>140</h></coordinates><panel_attributes>LoadMore
+--
++products
++page
++result
+--
++setProducts()
++setResult()
++setPage()
+ + render() </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>140</x><y>30</y><w>160</w><h>130</h></coordinates><panel_attributes>DataProvider
+--
++ token: [string, Function] 
++ GlobalState: Context 
+--
++refreshToken()
++ productsAPI: function 
++ userAPI: function
++ categoriesAPI: function  </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>590</x><y>20</y><w>90</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+зависим.</panel_attributes><additional_attributes>70;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>290</x><y>20</y><w>210</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+зависим.</panel_attributes><additional_attributes>190;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>170</x><y>150</y><w>80</w><h>100</h></coordinates><panel_attributes>lt=&lt;-
+зависим.</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>430</x><y>270</y><w>130</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=1
+&lt; ассоц.</panel_attributes><additional_attributes>10;20;110;20</additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>210</y><w>40</w><h>100</h></coordinates><panel_attributes></panel_attributes><additional_attributes>12;18;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>240</x><y>220</y><w>390</w><h>200</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=1
+&lt; ассоц.</panel_attributes><additional_attributes>12;168;360;170;360;10</additional_attributes></element><element><id>Relation</id><coordinates><x>290</x><y>120</y><w>160</w><h>100</h></coordinates><panel_attributes>lt=&lt;-
+зависим.</panel_attributes><additional_attributes>90;80;87;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>670</x><y>170</y><w>120</w><h>230</h></coordinates><panel_attributes>Products MongoDB
+--
+_id 
+- product_id 
+- title
+- price
+- description
+- author
+- images
+- category 
+- quantity
+- checked
+- sold
+- createdAt
+- updatedAt
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>590</x><y>160</y><w>100</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
+завис.</panel_attributes><additional_attributes>80;20;10;20</additional_attributes></element></diagram>

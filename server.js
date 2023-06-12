@@ -8,7 +8,9 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
 
+
 const app = express();
+require("./swagger")(app);
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors());

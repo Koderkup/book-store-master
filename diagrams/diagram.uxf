@@ -1,6 +1,6 @@
 <diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Гость
-</help_text><element><id>UMLActor</id><coordinates><x>800</x><y>0</y><w>60</w><h>120</h></coordinates><panel_attributes>Гость
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>90</x><y>0</y><w>450</w><h>180</h></coordinates><panel_attributes>Функционал для "Гостя":
+</help_text><element><id>UMLActor</id><coordinates><x>620</x><y>20</y><w>60</w><h>120</h></coordinates><panel_attributes>Гость
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>80</x><y>0</y><w>460</w><h>180</h></coordinates><panel_attributes>Функционал для "Гостя":
 --
 -Просмотр каталога книг
 -Регистрация
@@ -11,8 +11,9 @@
 -Фильтровть отзывы по названию книг
 -Пагинация страниц отзывов
 -Детальный просмотр товара с предложением по похожим товарам
--Обратная связь с продавцом в соцсетях</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLActor</id><coordinates><x>760</x><y>190</y><w>220</w><h>110</h></coordinates><panel_attributes>Зарегистрированный пользователь</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLActor</id><coordinates><x>820</x><y>500</y><w>100</w><h>110</h></coordinates><panel_attributes>Администратор</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>230</y><w>350</w><h>90</h></coordinates><panel_attributes>lt=.&gt;
-&lt;&lt;extends&gt;&gt;</panel_attributes><additional_attributes>330;10;10;70</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>80</x><y>200</y><w>460</w><h>200</h></coordinates><panel_attributes>Функционал для зарег. пользователя:
+-Обратная связь с продавцом в соцсетях</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLActor</id><coordinates><x>600</x><y>210</y><w>100</w><h>120</h></coordinates><panel_attributes>Зарег.
+пользователь</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLActor</id><coordinates><x>610</x><y>460</y><w>100</w><h>110</h></coordinates><panel_attributes>Администратор</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>240</y><w>140</w><h>80</h></coordinates><panel_attributes>lt=.&gt;
+&lt;&lt;extends&gt;&gt;</panel_attributes><additional_attributes>120;10;10;60</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>80</x><y>200</y><w>460</w><h>200</h></coordinates><panel_attributes>Функционал для зарег. пользователя:
 --
 -аутентификации и авторизация
 -Возможность оставлять товары в корзине и удалять их
@@ -36,8 +37,8 @@
 по дате либо по имени пользователя
 -просмотр и удаление отзывов
 -bann/unbann  пользователя
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>530</y><w>350</w><h>70</h></coordinates><panel_attributes>lt=.&gt;
-&lt;&lt;extends&gt;&gt;</panel_attributes><additional_attributes>330;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>40</y><w>310</w><h>60</h></coordinates><panel_attributes>lt=.&gt;
-&lt;&lt;includes&gt;&gt;</panel_attributes><additional_attributes>290;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>360</y><w>350</w><h>200</h></coordinates><panel_attributes>lt=.&gt;
-&lt;&lt;includes&gt;&gt;</panel_attributes><additional_attributes>330;180;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>150</y><w>360</w><h>110</h></coordinates><panel_attributes>lt=.&gt;
-&lt;&lt;includes&gt;&gt;</panel_attributes><additional_attributes>340;90;10;10</additional_attributes></element></diagram>
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>480</y><w>150</w><h>120</h></coordinates><panel_attributes>lt=.&gt;
+&lt;&lt;extends&gt;&gt;</panel_attributes><additional_attributes>130;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>50</y><w>140</w><h>50</h></coordinates><panel_attributes>lt=.&gt;
+&lt;&lt;includes&gt;&gt;</panel_attributes><additional_attributes>120;10;10;30</additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>360</y><w>150</w><h>150</h></coordinates><panel_attributes>lt=.&gt;
+&lt;&lt;includes&gt;&gt;</panel_attributes><additional_attributes>130;130;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>150</y><w>140</w><h>120</h></coordinates><panel_attributes>lt=.&gt;
+&lt;&lt;includes&gt;&gt;</panel_attributes><additional_attributes>120;100;10;10</additional_attributes></element></diagram>

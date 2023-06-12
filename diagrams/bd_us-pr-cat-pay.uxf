@@ -1,0 +1,120 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes..</help_text><element><id>UMLClass</id><coordinates><x>20</x><y>40</y><w>250</w><h>410</h></coordinates><panel_attributes>Users
+--
+{
+  "_id": {
+    "$oid": "63932a75b0abfae3a157687a"
+  },
+--
+  "name": "Василий",
+  "email": "vasya@mail.ru",
+  "password": "$2b$10$A9e.zjTMwVm.......",
+  "role": 0,
+  "cart": [
+-
+    {
+      "_id": "63ca926191fda3c69fae7ea3",
+--
+      "product_id": "7f89rt",
+     ...
+      },
+  ],
+  "createdAt": {
+    "$date": "2022-12-09T12:30:46.013Z"
+  },
+  "updatedAt": {
+    "$date": "2023-05-17T14:27:16.423Z"
+  },
+  "__v": 0
+}</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>320</x><y>190</y><w>250</w><h>440</h></coordinates><panel_attributes>Products
+--
+{
+  "_id": {
+    "$oid": 63ca926191fda3c69fae7ea3"
+  }, 
+--
+  "product_id": "7f89rt",
+  "title": "Книга о деньгах",
+  "price": 2.5,
+  "description": "интересная книга",
+  "author": "Росс Стабо",
+  "images": {
+    "public_id": "test/aucrwwiehn0gqv8xr43b",
+    "url": "https://res.cloudinary.com/......"
+  },
+--
+  "category": {
+    "$oid": "639c63baaa67678801a9ec68"
+  },
+--
+  "quantity": 1,
+  "checked": false,
+  "sold": 2,
+  "createdAt": {
+    "$date": "2023-01-20T13:08:49.659Z"
+  },
+  "updatedAt": {
+    "$date": "2023-06-02T17:02:49.083Z"
+  },
+  "__v": 0
+}</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>20</x><y>470</y><w>230</w><h>230</h></coordinates><panel_attributes>Category
+--
+{
+   "_id": {
+    "$oid": "639c63baaa67678801a9ec68"
+  }, 
+--
+  "name": "детектив",
+  "createdAt": {
+    "$date": "2022-12-16T12:25:11.782Z"
+  },
+  "updatedAt": {
+    "$date": "2022-12-16T12:25:11.782Z"
+  },
+  "__v": 0
+}</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>240</x><y>430</y><w>100</w><h>120</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;100;60;100;60;10;80;10</additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>220</y><w>80</w><h>30</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>60;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>640</x><y>0</y><w>270</w><h>650</h></coordinates><panel_attributes>Payments
+--
+{
+  "_id": {
+    "$oid": "643f866636661ba9f5d1d549"
+  },
+--
+  "user_id": "63932a75b0abfae3a157687a",
+--
+  "name": "Василий",
+  "email": "vasya@mail.ru",
+  "paymentID": "R7Yqwl91fWwg55EOjvOF7",
+  "address": "vasya@mail.ru",
+  "cart": [
+    {
+--
+  "_id": {
+    "$oid": "63ca926191fda3c69fae7ea3"
+  },
+--
+  "product_id": "7f89rt",
+  "title": "детская книга о деньгах",
+  "price": 2.5,
+  "description": "интересная книга",
+  "author": "Росс Стабо",
+  "images": {
+    "public_id": "test/aucrwwiehn0gqv8xr43b",
+    "url": "https://res.cloudinary.com."
+  },
+  "category": {
+    "$oid": "639c63baaa67678801a9ec68"
+  },
+  "quantity": 1,
+  "checked": false,
+  "sold": 2,
+ 
+}
+  ],
+  "status": true,
+  "createdAt": {
+    "$date": "2023-04-19T06:12:54.946Z"
+  },
+  "updatedAt": {
+    "$date": "2023-06-03T07:33:16.191Z"
+  },
+  "__v": 0
+}</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>90</y><w>400</w><h>30</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;380;10</additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>220</y><w>100</w><h>30</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;80;10</additional_attributes></element></diagram>

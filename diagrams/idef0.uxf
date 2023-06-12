@@ -1,0 +1,42 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>220</x><y>120</y><w>340</w><h>200</h></coordinates><panel_attributes>
+
+
+
+
+Интернет-магазин 
+продажи книг
+
+
+
+                                             
+                                                                                                   
+                                                                                                        0</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>520</x><y>310</y><w>80</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+персонал</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>170</x><y>310</y><w>110</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+интерфейс магаз.</panel_attributes><additional_attributes>70;10;70;60;40;60;40;120</additional_attributes></element><element><id>Relation</id><coordinates><x>390</x><y>310</y><w>130</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+неавторизованные
+посетители </panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>20</x><y>310</y><w>220</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+поставщики
+ книг</panel_attributes><additional_attributes>200;10;150;10;150;40;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>280</x><y>310</y><w>110</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+авторизованные
+покупатели</panel_attributes><additional_attributes>70;10;70;60;40;60;40;120</additional_attributes></element><element><id>Relation</id><coordinates><x>190</x><y>0</y><w>110</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+законодательство</panel_attributes><additional_attributes>80;120;80;80;50;80;50;10</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>0</y><w>90</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+роль 
+посетителя</panel_attributes><additional_attributes>10;120;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>460</x><y>0</y><w>90</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+онлайн ката-
+лог книг</panel_attributes><additional_attributes>70;120;70;80;40;80;40;10</additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>140</y><w>150</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+остаток на 
+складе</panel_attributes><additional_attributes>130;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>200</y><w>150</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+проданные
+книги</panel_attributes><additional_attributes>130;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>250</y><w>150</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+статистика</panel_attributes><additional_attributes>130;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>80</x><y>110</y><w>160</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+каталог</panel_attributes><additional_attributes>140;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>80</x><y>130</y><w>160</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+данные
+пользователя</panel_attributes><additional_attributes>140;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>80</x><y>170</y><w>160</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+наличие
+на складе</panel_attributes><additional_attributes>140;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>80</x><y>210</y><w>160</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+сообщение
+об оплате</panel_attributes><additional_attributes>140;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>80</x><y>250</y><w>160</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+оформление
+заказа</panel_attributes><additional_attributes>140;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>80</x><y>280</y><w>160</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+отзывы
+покупателей</panel_attributes><additional_attributes>140;20;10;20</additional_attributes></element></diagram>
