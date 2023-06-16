@@ -15,12 +15,12 @@ bg=yellow</panel_attributes><additional_attributes></additional_attributes></ele
 3: ввести логин
 и пароль()</panel_attributes><additional_attributes>140;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>84</x><y>336</y><w>192</w><h>48</h></coordinates><panel_attributes>lt=&lt;-
 4: авторизоваться()</panel_attributes><additional_attributes>140;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>264</x><y>408</y><w>228</w><h>60</h></coordinates><panel_attributes>lt=&lt;-
-5: принять JWT:логин 
+5: принять логин 
 и пароль()</panel_attributes><additional_attributes>170;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>480</x><y>432</y><w>204</w><h>72</h></coordinates><panel_attributes>lt=&lt;-
 6: проверить
 правильность
 заполнения()</panel_attributes><additional_attributes>10;20;70;20;70;30;10;30</additional_attributes></element><element><id>Relation</id><coordinates><x>480</x><y>540</y><w>228</w><h>60</h></coordinates><panel_attributes>lt=&lt;-
-7: поверить JWT:логин 
+7: проверить JWT:логин 
 и пароль()</panel_attributes><additional_attributes>170;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>480</x><y>624</y><w>228</w><h>60</h></coordinates><panel_attributes>lt=&lt;-
 8: определить
 роль пользователя()</panel_attributes><additional_attributes>10;20;170;20</additional_attributes></element><element><id>Relation</id><coordinates><x>480</x><y>744</y><w>228</w><h>72</h></coordinates><panel_attributes>lt=&lt;-
@@ -28,8 +28,26 @@ bg=yellow</panel_attributes><additional_attributes></additional_attributes></ele
 досуп к ресурсам
 сайта()</panel_attributes><additional_attributes>10;20;70;20;70;30;10;30</additional_attributes></element><element><id>Relation</id><coordinates><x>480</x><y>816</y><w>384</w><h>60</h></coordinates><panel_attributes>lt=&lt;-
 10: отобразить
-страницу()</panel_attributes><additional_attributes>300;20;10;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>12</x><y>156</y><w>936</w><h>816</h></coordinates><panel_attributes>Alt: Успешная авторизация</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>0</x><y>864</y><w>972</w><h>36</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>790;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>684</x><y>900</y><w>36</w><h>84</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>12</x><y>852</y><w>204</w><h>24</h></coordinates><panel_attributes>Alt: Ошибка авторизации</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>480</x><y>888</y><w>228</w><h>48</h></coordinates><panel_attributes>lt=&lt;-
+страницу()</panel_attributes><additional_attributes>300;20;10;20</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>12</x><y>156</y><w>948</w><h>816</h></coordinates><panel_attributes>Alt: Успешная авторизация</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>0</x><y>864</y><w>984</w><h>36</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>800;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>684</x><y>900</y><w>36</w><h>84</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>UMLFrame</id><coordinates><x>12</x><y>852</y><w>216</w><h>24</h></coordinates><panel_attributes>Alt: Ошибка авторизации</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>480</x><y>888</y><w>228</w><h>48</h></coordinates><panel_attributes>lt=&lt;-
 Status(500)</panel_attributes><additional_attributes>10;20;170;20</additional_attributes></element><element><id>Relation</id><coordinates><x>264</x><y>888</y><w>228</w><h>60</h></coordinates><panel_attributes>lt=&lt;-
 Error: Неверные учетные
 данные</panel_attributes><additional_attributes>10;20;170;20</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>684</x><y>876</y><w>24</w><h>36</h></coordinates><panel_attributes>
-bg=yellow</panel_attributes><additional_attributes></additional_attributes></element></diagram>
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>420</x><y>60</y><w>96</w><h>96</h></coordinates><panel_attributes>// Control Element
+customelement=
+// Control Symbol
+drawCircle(50, 50, 20)
+drawLine(44, 31, 54, 21)
+drawLine(44, 31, 54, 41)
+	</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>204</x><y>60</y><w>96</w><h>96</h></coordinates><panel_attributes>// Boundary Element
+customelement=
+// Boundary Symbol
+drawCircle(50, 50, 20)
+drawLine(20, 50, 30, 50)
+drawLine(20, 30, 20, 70)
+	</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>804</x><y>60</y><w>96</w><h>96</h></coordinates><panel_attributes>// Boundary Element
+customelement=
+// Boundary Symbol
+drawCircle(50, 50, 20)
+drawLine(20, 50, 30, 50)
+drawLine(20, 30, 20, 70)
+	</panel_attributes><additional_attributes></additional_attributes></element></diagram>
