@@ -20,9 +20,29 @@ const reviewCtrl = {
     }
   },
 
+  // addReview: async (req, res) => {
+  //   try {
+  //     const { author, text, rating, product } = req.body;
+  //     const newReview = new Reviews({
+  //       author,
+  //       text,
+  //       rating,
+  //       product,
+  //       user: req.body.user,
+  //     });
+  //     const savedReview = await newReview.save();
+  //     res.json(savedReview);
+  //   } catch (err) {
+  //     console.log(err);
+  //     res.status(500).json({ msg: err.message });
+  //   }
+  // },
   addReview: async (req, res) => {
-    try {
-      const { author, text, rating, product } = req.body;
+  try {
+    const { author, text, rating, product } = req.body;
+    const existingReview = await Reviews.findOne({ product, author });
+
+    if (!existingReview) {
       const newReview = new Reviews({
         author,
         text,
@@ -31,12 +51,15 @@ const reviewCtrl = {
         user: req.body.user,
       });
       const savedReview = await newReview.save();
-      res.json(savedReview);
-    } catch (err) {
-      console.log(err);
-      res.status(500).json({ msg: err.message });
+      return res.json(savedReview);
+    } else {
+      return res.status(400).json({ msg: "Ваш отзыв на этот товар уже существует" });
     }
-  },
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ msg: err.message });
+  }
+},
   editReview: async (req, res) => {
     try {
       const { text, rating } = req.body;

@@ -156,7 +156,11 @@ function CreateProduct() {
           </div>
         ) : (
           <div id="file_img" style={styleUpload}>
-            <img src={images ? images.url : ""} alt="" />
+            <img
+              src={images ? images.url : ""}
+              alt="изображение временно не недоступно"
+              style={{ fontSize: "40px", textAlign: "center", color: "red" }}
+            />
             <span onClick={handleDestroy}>X</span>
           </div>
         )}

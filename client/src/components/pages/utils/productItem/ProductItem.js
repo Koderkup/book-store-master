@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import BtnRender from "./BtnRender";
-
+import NotFoundImage from "./asset/not_found.png";
 function ProductItem({ product, isAdmin, deleteProduct, handleCheck }) {
+  const [imageError, setImageError] = useState(false);
+  const handleImageError = () => {
+    setImageError(true);
+  };
   return (
     <div className="product_card">
       {isAdmin && (
@@ -11,7 +15,21 @@ function ProductItem({ product, isAdmin, deleteProduct, handleCheck }) {
           onChange={() => handleCheck(product._id)}
         />
       )}
-      <img src={product.images.url} alt="" />
+      {!imageError ? (
+        <img
+          src={product.images.url}
+          alt="изображение временно недоступно"
+          className="img"
+          style={{ fontSize: "40px", textAlign: "center", color: "red" }}
+          onError={handleImageError}
+        />
+      ) : (
+        <img
+          src={NotFoundImage}
+          alt="изображение не найдено"
+          style={{ fontSize: "40px", textAlign: "center", color: "red" }}
+        />
+      )}
 
       <div className="product_box">
         <h2 title={product.title}>{product.title}</h2>

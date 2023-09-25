@@ -138,7 +138,11 @@ function Cart() {
     <div>
       {cart.map((product) => (
         <div className="detail cart" key={product._id}>
-          <img src={product.images.url} alt="" />
+          <img
+            src={product.images.url}
+            alt="изображение временно не недоступно"
+            style={{ fontSize: "40px", textAlign: "center", color: "red" }}
+          />
 
           <div className="box-detail">
             <h2>{product.title}</h2>
@@ -210,7 +214,7 @@ function Cart() {
       ) : (
         ""
       )}
-      <Map/>
+      <Map />
     </div>
   );
 }

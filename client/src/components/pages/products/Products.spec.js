@@ -108,13 +108,13 @@ describe("Products component", () => {
     expect(screen.getByTestId("load-more")).toBeInTheDocument();
   });
 
-  it("renders ProductItem components equal to the number of products", () => {
+  it("renders ProductItem components равный количеству of products", () => {
     render(wrapper);
     const productItems = screen.getAllByText(/Изменить/i);
     expect(productItems.length).toBe(2);
   });
 
-  it("calls deleteProduct function when delete button is clicked on ProductItem component", async () => {
+  it("вызов deleteProduct function по клику кнопки удалить на ProductItem component", async () => {
     const mockResponse = { data: { msg: "Product deleted" } };
     axios.post.mockResolvedValueOnce(mockResponse);
     axios.delete.mockResolvedValueOnce(mockResponse);
@@ -130,7 +130,7 @@ describe("Products component", () => {
     });
   });
 
-    it('calls deleteAll function when delete all button is clicked', async () => {
+    it('вызов deleteAll function по клику delete all кнопки', async () => {
       const mockDeleteProduct = jest.fn();
       Products.prototype.deleteProduct = mockDeleteProduct;
 

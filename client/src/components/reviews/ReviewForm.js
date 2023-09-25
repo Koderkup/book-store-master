@@ -31,14 +31,17 @@ const ReviewForm = ({ productId, userId, author }) => {
           headers: { Authorization: token },
         }
       );
+      if (response.data.product) {
+        alert('Отзыв на товар успешно создан');
+      }
       setRating("");
       setComment("");
     } catch (error) {
       if (error.response && error.response.status === 403) {
-        alert(error.response.data.message);
+        alert(error.response.data.msg);
       } else if (error.response && error.response.status === 400) {
         // проверяем, является ли ошибка ошибкой на сервере
-        alert(error.response.data.message);
+         alert(error.response.data.msg);
       } else {
         console.error(error);
       }

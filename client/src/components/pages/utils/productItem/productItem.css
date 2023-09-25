@@ -67,3 +67,7 @@
     width: 25px;
     height: 25px;
 }
+
+.img {
+    min-width: 270px;
+}

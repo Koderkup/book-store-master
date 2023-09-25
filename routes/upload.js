@@ -33,7 +33,12 @@ router.post("/upload", auth, authAdmin, (req, res) => {
       file.tempFilePath,
       { folder: "test" },
       async (err, result) => {
-        if (err) throw err;
+        if (err) {
+          // Обработка ошибки подключения к Cloudinary
+          console.log(err); // Вывод ошибки в консоль для отладки
+          removeTmp(file.tempFilePath);
+          return res.json({ public_id: "error", url: "./asset/not_found.png" });
+        }
 
         removeTmp(file.tempFilePath);
 
@@ -52,7 +57,11 @@ router.post("/destroy", auth, authAdmin, (req, res) => {
     if (!public_id) return res.status(400).json({ msg: "No images Selected" });
 
     cloudinary.v2.uploader.destroy(public_id, async (err, result) => {
-      if (err) throw err;
+      if (err) {
+        // Обработка ошибки подключения к Cloudinary
+        console.log(err); // Вывод ошибки в консоль для отладки
+        return res.json({ msg: "Error deleting image" });
+      }
 
       res.json({ msg: "Deleted Image" });
     });
@@ -68,3 +77,90 @@ const removeTmp = (path) => {
 };
 
 module.exports = router;
+
+
+//------------------------------------------------------------------------------------------
+// google drive
+
+/*
+const router = require("express").Router();
+const { google } = require("googleapis");
+const auth = require("../middleware/auth");
+const authAdmin = require("../middleware/authAdmin");
+const fs = require("fs");
+
+// Подключение к Google Диску
+const authClient = new google.auth.GoogleAuth({
+  keyFile: "./apikey.json",
+  scopes: ["https://www.googleapis.com/auth/drive.file"],
+});
+
+const drive = google.drive({
+  version: "v3",
+  auth: authClient,
+});
+
+// Загрузить изображение (только администратор может)
+router.post("/upload", auth, authAdmin, async (req, res) => {
+  try {
+    if (!req.files || Object.keys(req.files).length === 0)
+      return res.status(400).json({ msg: "No files were uploaded." });
+
+    const file = req.files.file;
+
+    if (file.size > 1024 * 1024) {
+      removeTmp(file.tempFilePath);
+      return res.status(400).json({ msg: "Size too large" });
+    }
+
+    if (file.mimetype !== "image/jpeg" && file.mimetype !== "image/png") {
+      removeTmp(file.tempFilePath);
+      return res.status(400).json({ msg: "File format is incorrect." });
+    }
+
+    const response = await drive.files.create({
+      requestBody: {
+        name: file.name,
+        mimeType: file.mimetype,
+        parents: ["1xpvvwMvKES9areAhiQ0S0E-wKiyijRiS"], // Замените на папку, в которую вы хотите загрузить файл
+      },
+      media: {
+        mimeType: file.mimetype,
+        body: fs.createReadStream(file.tempFilePath),
+      },
+    });
+
+    removeTmp(file.tempFilePath);
+
+    res.json({ public_id: response.data.id, url: response.data.webViewLink });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ msg: err.message });
+  }
+});
+
+// Удалить изображение (только администратор может)
+router.post("/destroy", auth, authAdmin, async (req, res) => {
+  try {
+    const { public_id } = req.body;
+    if (!public_id) return res.status(400).json({ msg: "No images Selected" });
+
+    await drive.files.delete({
+      fileId: public_id,
+    });
+
+    res.json({ msg: "Deleted Image" });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ msg: err.message });
+  }
+});
+
+const removeTmp = (path) => {
+  fs.unlink(path, (err) => {
+    if (err) throw err;
+  });
+};
+
+module.exports = router;
+*/

@@ -31,79 +31,79 @@ const state = {
 describe("ProductItem component", () => {
   const deleteProduct = jest.fn();
   const handleCheck = jest.fn();
-   const isAdmin = [true];
+  const isAdmin = [true];
 
-    it("renders product details correctly", () => {
-      render(
-        <GlobalState.Provider value={state}>
-          <MemoryRouter initialEntries={["/"]}>
-            <ProductItem
-              product={product}
-              deleteProduct={deleteProduct}
-              handleCheck={handleCheck}
-              isAdmin={isAdmin}
-            />
-          </MemoryRouter>
-        </GlobalState.Provider>
-      );
-      expect(screen.getByTitle("Test Product")).toBeInTheDocument();
-      expect(screen.getByText("100 руб")).toBeInTheDocument();
-      expect(screen.getByText("кол-во 5 шт")).toBeInTheDocument();
-      expect(screen.getByText("Test Author")).toBeInTheDocument();
-      expect(screen.getByText("Test Description")).toBeInTheDocument();
-      expect(screen.getByAltText("")).toHaveAttribute("src", "test-image.jpg");
-    });
+  it("renders product details correctly", () => {
+    render(
+      <GlobalState.Provider value={state}>
+        <MemoryRouter initialEntries={["/"]}>
+          <ProductItem
+            product={product}
+            deleteProduct={deleteProduct}
+            handleCheck={handleCheck}
+            isAdmin={isAdmin}
+          />
+        </MemoryRouter>
+      </GlobalState.Provider>
+    );
+    expect(screen.getByTitle("Test Product")).toBeInTheDocument();
+    expect(screen.getByText("100 руб")).toBeInTheDocument();
+    expect(screen.getByText("кол-во 5 шт")).toBeInTheDocument();
+    expect(screen.getByText("Test Author")).toBeInTheDocument();
+    expect(screen.getByText("Test Description")).toBeInTheDocument();
+    expect(screen.getByAltText("")).toHaveAttribute("src", "test-image.jpg");
+  });
 
-    it("renders 'нет в наличии' when product quantity is 0", () => {
-      const outOfStockProduct = { ...product, quantity: 0 };
-     render(
-       <GlobalState.Provider value={state}>
-         <MemoryRouter initialEntries={["/"]}>
-           <ProductItem
-             product={outOfStockProduct}
-             deleteProduct={deleteProduct}
-             handleCheck={handleCheck}
-             isAdmin={isAdmin}
-           />
-         </MemoryRouter>
-       </GlobalState.Provider>
-     );
-      expect(screen.getByText("нет в наличии")).toBeInTheDocument();
-      expect(screen.queryByText("кол-во 0 шт")).not.toBeInTheDocument();
-    });
+  it("renders 'нет в наличии' when product quantity is 0", () => {
+    const outOfStockProduct = { ...product, quantity: 0 };
+    render(
+      <GlobalState.Provider value={state}>
+        <MemoryRouter initialEntries={["/"]}>
+          <ProductItem
+            product={outOfStockProduct}
+            deleteProduct={deleteProduct}
+            handleCheck={handleCheck}
+            isAdmin={isAdmin}
+          />
+        </MemoryRouter>
+      </GlobalState.Provider>
+    );
+    expect(screen.getByText("нет в наличии")).toBeInTheDocument();
+    expect(screen.queryByText("кол-во 0 шт")).not.toBeInTheDocument();
+  });
 
-    it("renders checkbox when isAdmin prop is true", () => {
-      render(
-        <GlobalState.Provider value={state}>
-          <MemoryRouter initialEntries={["/"]}>
-            <ProductItem
-              product={product}
-              deleteProduct={deleteProduct}
-              handleCheck={handleCheck}
-              isAdmin={isAdmin}
-            />
-          </MemoryRouter>
-        </GlobalState.Provider>
-      );
-      expect(screen.getByRole("checkbox")).toBeInTheDocument();
-    });
+  it("renders checkbox when isAdmin prop is true", () => {
+    render(
+      <GlobalState.Provider value={state}>
+        <MemoryRouter initialEntries={["/"]}>
+          <ProductItem
+            product={product}
+            deleteProduct={deleteProduct}
+            handleCheck={handleCheck}
+            isAdmin={isAdmin}
+          />
+        </MemoryRouter>
+      </GlobalState.Provider>
+    );
+    expect(screen.getByRole("checkbox")).toBeInTheDocument();
+  });
 
-    it("does not render checkbox when isAdmin prop is false", () => {
-      const isAdmin = false;
-     render(
-       <GlobalState.Provider value={state}>
-         <MemoryRouter initialEntries={["/"]}>
-           <ProductItem
-             product={product}
-             deleteProduct={deleteProduct}
-             handleCheck={handleCheck}
-             isAdmin={isAdmin}
-           />
-         </MemoryRouter>
-       </GlobalState.Provider>
-     );
-      expect(screen.queryByRole("checkbox")).not.toBeInTheDocument();
-    });
+  it("does not render checkbox when isAdmin prop is false", () => {
+    const isAdmin = false;
+    render(
+      <GlobalState.Provider value={state}>
+        <MemoryRouter initialEntries={["/"]}>
+          <ProductItem
+            product={product}
+            deleteProduct={deleteProduct}
+            handleCheck={handleCheck}
+            isAdmin={isAdmin}
+          />
+        </MemoryRouter>
+      </GlobalState.Provider>
+    );
+    expect(screen.queryByRole("checkbox")).not.toBeInTheDocument();
+  });
 
   it("calls handleCheck function when checkbox is clicked", () => {
     render(

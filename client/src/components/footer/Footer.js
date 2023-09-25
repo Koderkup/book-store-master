@@ -22,7 +22,7 @@ const Footer = () => {
             >
               <Telegram className="social_media" />
             </a>
-            <a href="https://instagram.com/koderkup/" title="Instagram">
+            <a href="https://instagram.com/Coderkup/" title="Instagram">
               <Instagram className="social_media" />
             </a>
           </div>

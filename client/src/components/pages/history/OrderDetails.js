@@ -9,16 +9,15 @@ function OrderDetails() {
   const [orderDetails, setOrderDetails] = useState([]);
   const [isLogged] = state.userAPI.isLogged;
   const [productId, setProductId] = useState("");
-  const [selectedValue, setSelectedValue] = useState('');
+  const [selectedValue, setSelectedValue] = useState("");
   const params = useParams();
 
   function handleCheckboxChange(e) {
-    if(!selectedValue){
- setSelectedValue(e.target.value);
+    if (!selectedValue) {
+      setSelectedValue(e.target.value);
     } else {
-      setSelectedValue('');
+      setSelectedValue("");
     }
-   
   }
   useEffect(() => {
     if (params.id) {
@@ -58,7 +57,7 @@ function OrderDetails() {
           </tr>
         </tbody>
       </table>
-
+      <p className="review-instruction">Выберите товар о котором желаете оставить отзыв</p>
       <table style={{ margin: "30px 0px" }}>
         <thead>
           <tr>
@@ -83,7 +82,15 @@ function OrderDetails() {
                   }}
                   data-testid="checkbox"
                 />
-                <img src={item.images.url} alt="Product 1" />
+                <img
+                  src={item.images.url}
+                  alt="изображение временно не недоступно"
+                  style={{
+                    fontSize: "10px",
+                    textAlign: "center",
+                    color: "red",
+                  }}
+                />
               </td>
               <td>{item.title}</td>
               <td>{item.quantity}</td>

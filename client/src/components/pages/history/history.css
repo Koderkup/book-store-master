@@ -51,6 +51,11 @@ table a {
   justify-content: space-around;
   align-items: center;
 }
+.review-instruction {
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
+}
 @media (max-width: 768px) {
   .adminSearch {
     display: flex;
