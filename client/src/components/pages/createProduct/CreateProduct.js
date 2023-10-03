@@ -8,10 +8,8 @@ const initialState = {
   product_id: "",
   title: "",
   price: 0,
-  description:
-    "интересная книга",
-  author:
-    "Достоевский Ф.М.",
+  description: "интересная книга",
+  author: "Достоевский Ф.М.",
   category: "",
   quantity: 1,
   _id: "",
@@ -35,7 +33,6 @@ function CreateProduct() {
   const [callback, setCallback] = state.productsAPI.callback;
 
   useEffect(() => {
-    
     if (param.id) {
       setOnEdit(true);
       products.forEach((product) => {

@@ -1,0 +1,20 @@
+version: '3.5'
+
+services:
+  mongo:
+    container_name: bookstore2_mongo
+    image: mongo:latest
+    restart: unless-stopped
+    volumes:
+      - mongo:/data/db
+    ports:
+      - 127.0.0.1:27018:27017
+    networks:
+      - bookstore2
+
+networks:
+  bookstore2:
+    driver: bridge
+
+volumes:
+  mongo:

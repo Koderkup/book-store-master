@@ -115,10 +115,10 @@ const productCtrl = {
           (p) => p._id.toString() === products[i]._id.toString()
         );
         if (productWithGenre) {
-            products[i] = productWithGenre;
+          products[i] = productWithGenre;
         }
       }
-//---------------------------------------------------------------------
+      //---------------------------------------------------------------------
       res.json({
         status: "success",
         result: products.length,
@@ -140,6 +140,7 @@ const productCtrl = {
         category,
         quantity,
       } = req.body;
+      console.log(req.body);
       if (!images)
         return res
           .status(400)
@@ -148,7 +149,9 @@ const productCtrl = {
       const product = await Products.findOne({ product_id });
       if (product)
         return res.status(400).json({ msg: "Этот товар уже существует." });
-
+      else if (category === "") {
+        return res.status(400).json({ msg: "Укажите категорию товара." });
+      }
       const categoryObj = await Category.findOne({ _id: category });
       if (!categoryObj) {
         return res.status(400).json({ msg: "Такой категории не существует." });
